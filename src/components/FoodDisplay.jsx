@@ -7,7 +7,7 @@ const FoodDisplay = ({category}) => {
 
   return (
     <div className='mt-8'>
-      <h1 className='text-3xl font-bold dark:text-neutral-200'>Top dishes near you</h1>
+      <h1 className='text-2xl md:text-3xl font-bold dark:text-neutral-200'>Top dishes near you</h1>
       <div style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(240px, 1fr))' }} className='grid mt-8 gap-8 gap-y-12'>
         {food_list.map((item, index) => {
           if(category === "All" || category === item.category) {

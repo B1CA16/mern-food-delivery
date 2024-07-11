@@ -4,8 +4,8 @@ import {menu_list} from '../assets/assets'
 const ExploreMenu = ({category, setCategory}) => {
   return (
     <div className='flex flex-col gap-5' id='explore-menu'>
-      <h1 className='text-3xl font-bold dark:text-neutral-200'>Explore our menu</h1>
-      <p className='max-w-[60%] dark:text-neutral-200'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time</p>
+      <h1 className='text-2xl md:text-3xl font-bold dark:text-neutral-200'>Explore our menu</h1>
+      <p className='max-w-[80%] md:max-w-[60%] text-sm md:text-md dark:text-neutral-200'>Choose from a diverse menu featuring a delectable array of dishes. Our mission is to satisfy your cravings and elevate your dining experience, one delicious meal at a time</p>
       <div className='flex justify-between items-center gap-8 text-center my-4 overflow-x-scroll no-scrollbar'>
         {menu_list.map((item, index) => {
           return (
