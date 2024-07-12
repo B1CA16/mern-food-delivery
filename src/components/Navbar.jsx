@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { FaMagnifyingGlass, FaCartShopping } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState("home")
 
   return (
@@ -19,7 +19,7 @@ const Navbar = () => {
           <FaCartShopping className='dark:text-neutral-200 text-lg md:text-2xl dark:hover:text-neutral-300 hover:text-neutral-700 hover:cursor-pointer' />
           <div className='absolute min-w-4 min-h-4 bg-orange-500 rounded-full -top-2 -right-2 border-2 border-white dark:border-neutral-900'></div>
         </div>
-        <button className='px-4 py-2 text-sm md:text-lg bg-orange-500 rounded-xl text-white transition-colors hover:bg-orange-600'>Sign In</button>
+        <button onClick={() => setShowLogin(true)} className='px-4 py-2 text-sm md:text-lg bg-orange-500 rounded-xl text-white transition-colors hover:bg-orange-600'>Sign In</button>
       </div>
     </div>
   )

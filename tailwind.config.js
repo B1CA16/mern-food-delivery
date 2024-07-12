@@ -9,7 +9,7 @@ module.exports = {
         sans: ['Roboto', 'sans-serif'],
       },
       animation: {
-				fade: 'fadeIn 2s ease-in-out',
+				fade: 'fadeIn 1s ease-in-out',
 			},
 			keyframes: {
 				fadeIn: {
