@@ -4,25 +4,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import useDarkMode from '../hooks/useDarkMode'
 
-const useDarkMode = () => {
-  const [isDarkMode, setIsDarkMode] = useState(
-    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handleChange = () => setIsDarkMode(mediaQuery.matches);
-
-    mediaQuery.addEventListener('change', handleChange);
-    return () => mediaQuery.removeEventListener('change', handleChange);
-  }, []);
-
-  return isDarkMode;
-};
-
-const Add = () => {
-  const url = "http://localhost:4000"
+const Add = ({url}) => {
   const isDarkMode = useDarkMode();
   const [image, setImage] = useState(false)
   const [data, setData] = useState({
