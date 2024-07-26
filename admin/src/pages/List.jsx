@@ -48,12 +48,12 @@ const List = ({url}) => {
           <b className='w-1/6'>Action</b>
         </div>
         {list.map((item, index) => (
-          <div key={index} className='flex flex-row items-center gap-2 md:gap-4 py-3 px-2 md:px-4 border-b-[1px] border-neutral-300 dark:border-neutral-800'>
+          <div key={index} className='flex flex-row justify-start items-center gap-2 md:gap-4 py-3 px-2 md:px-4 border-b-[1px] border-neutral-300 dark:border-neutral-800'>
             <img className='w-1/6 md:w-20 lg:w-28 rounded-lg' src={`${url}/images/${item.image}`} alt={item.name} />
             <p className='w-1/3 truncate'>{item.name}</p>
             <p className='w-1/6 truncate'>{item.category}</p>
             <p className='w-1/6'>{item.price}$</p>
-            <button onClick={() => removeItem(item._id)} className='w-1/6 hover:text-neutral-700 dark:hover:text-neutral-300'>X</button>
+            <button onClick={() => removeItem(item._id)} className='px-3 py-1 rounded-lg hover:bg-red-300 dark:hover:bg-red-600'>X</button>
           </div>
         ))}
       </div>
