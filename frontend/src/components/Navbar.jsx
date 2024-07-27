@@ -1,11 +1,32 @@
-import React, { useContext, useState } from 'react'
-import { FaMagnifyingGlass, FaCartShopping } from 'react-icons/fa6'
-import { Link } from 'react-router-dom'
-import { StoreContext } from '../context/StoreContext'
+import React, { useContext, useState, useEffect } from 'react';
+import { FaMagnifyingGlass, FaCartShopping, FaBagShopping, FaRightFromBracket, FaUser } from 'react-icons/fa6';
+import { Link, useNavigate } from 'react-router-dom';
+import { StoreContext } from '../context/StoreContext';
 
-const Navbar = ({setShowLogin}) => {
-  const { getTotalCartAmount } = useContext(StoreContext)
-  const [menu, setMenu] = useState("home")
+const Navbar = ({ setShowLogin }) => {
+  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const [menu, setMenu] = useState("home");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    setToken("");
+    navigate('/');
+  }
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownOpen && !event.target.closest('.dropdown-menu')) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
   return (
     <div className='flex py-4 justify-between items-center'>
@@ -21,10 +42,26 @@ const Navbar = ({setShowLogin}) => {
           <Link to='/cart'><FaCartShopping className='dark:text-neutral-200 text-lg md:text-2xl dark:hover:text-neutral-300 hover:text-neutral-700 hover:cursor-pointer' /></Link>
           {getTotalCartAmount() > 0 && <div className='absolute min-w-4 min-h-4 bg-orange-500 rounded-full -top-2 -right-2 border-2 border-white dark:border-neutral-900'></div>}
         </div>
-        <button onClick={() => setShowLogin(true)} className='px-4 py-2 text-sm md:text-lg bg-orange-500 rounded-xl text-white transition-colors hover:bg-orange-600'>Sign In</button>
+        {!token ? <button onClick={() => setShowLogin(true)} className='px-4 py-2 text-sm md:text-lg bg-orange-500 rounded-xl text-white transition-colors hover:bg-orange-600'>Sign In</button>
+        : <div className='relative dropdown-menu'>
+            <FaUser className='dark:text-neutral-200 text-lg md:text-2xl dark:hover:text-neutral-300 hover:text-neutral-700 hover:cursor-pointer' onClick={() => setDropdownOpen(!dropdownOpen)} />
+            {dropdownOpen && (
+              <ul className='dark:text-neutral-200 absolute bg-white dark:bg-neutral-800 shadow-md rounded-md right-0 mt-2 py-2 w-48 z-10'>
+                <li className='flex items-center px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer'>
+                  <FaBagShopping className='text-orange-500 text-lg md:text-2xl' />
+                  <span className='ml-3 font-medium'>Orders</span>
+                </li>
+                <hr className='my-1 dark:border-neutral-600' />
+                <li onClick={logout} className='flex items-center px-4 py-2 hover:bg-neutral-100 dark:hover:bg-neutral-700 cursor-pointer'>
+                  <FaRightFromBracket className='text-orange-500 text-lg md:text-2xl' />
+                  <span className='ml-3 font-medium'>Log Out</span>
+                </li>
+              </ul>
+            )}
+          </div> }
       </div>
     </div>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;
