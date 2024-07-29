@@ -1,7 +1,6 @@
 import foodModel from "../models/foodModel.js"
 import fs from "fs"
 
-// add food item
 const addFood = async (req, res) => {
   let image_filename = `${req.file.filename}`
   const food = new foodModel({
@@ -20,7 +19,6 @@ const addFood = async (req, res) => {
   }
 }
 
-// all food list
 const listFood = async (req, res) => {
   try {
     const foods = await foodModel.find({})
@@ -30,7 +28,6 @@ const listFood = async (req, res) => {
   }
 }
 
-// remove food item
 const removeFood = async (req, res) => {
   try {
     const food = await foodModel.findById(req.body.id)
