@@ -5,17 +5,17 @@ import Stripe from "stripe"
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 const placeOrder = async (req, res) => {
-  const frontendUrl = "http://localhost:5173"
+  const frontend_url = "http://localhost:5173"
 
   try {
     const newOrder = new orderModel({
-      userId: req.userId,
+      userId: req.body.userId,
       items: req.body.items,
       amount: req.body.amount,
       address: req.body.address
     })
     await newOrder.save()
-    await userModel.findByIdAndUpdate(req.userId, {cartData: {}})
+    await userModel.findByIdAndUpdate(req.body.userId, {cartData: {}})
 
     const line_items = req.body.items.map((item) =>( {
       price_data: {
@@ -40,15 +40,16 @@ const placeOrder = async (req, res) => {
     })
 
     const session = await stripe.checkout.sessions.create({
-      line_items,
+      line_items: line_items,
       mode: 'payment',
-      success_url: `${frontendUrl}/verify?success=true&orderId=${newOrder._id}`,
-      cancel_url: `${frontendUrl}/verify?success=false&orderId=${newOrder._id}`
+      success_url: `${frontend_url}/verify?success=true&orderId=${newOrder._id}`,
+      cancel_url: `${frontend_url}/verify?success=false&orderId=${newOrder._id}`
     })
 
     res.json({success: true, session_url: session.url})
   } catch (error) {
-    res.json({success: false, message: "Error placing order"})
+    console.error("Error placing order:", error);
+    res.json({ success: false, message: error.message || "Error placing order" });
   }
 }
 
