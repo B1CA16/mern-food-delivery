@@ -36,7 +36,7 @@ const MyOrders = () => {
               <p>{order.amount}.00$</p>
               <p>Items: {order.items.length}</p>
               <p className='font-medium'><span className='text-orange-500'>&#x25cf;</span> {order.status}</p>
-              <button className='py-2 px-1 font-medium rounded-lg bg-orange-500 hover:bg-orange-600 text-neutral-200'>Track Order</button>
+              <button onClick={fetchOrders} className='py-2 px-1 font-medium rounded-lg bg-orange-500 hover:bg-orange-600 text-neutral-200'>Track Order</button>
             </div>
           )
         })}

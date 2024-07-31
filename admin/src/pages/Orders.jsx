@@ -15,6 +15,19 @@ const Orders = ({ url }) => {
     }
   };
 
+  const statusHandler = async (event, id) => {
+    const response = await axios.post(url + "/api/order/status", {
+      orderId: id,
+      status: event.target.value,
+    });
+    if (response.data.success) {
+      await fetchOrders();
+      toast.success("Order status updated");
+    } else {
+      toast.error("Error updating order status");
+    }
+  };
+
   useEffect(() => {
     fetchOrders();
   }, []);
@@ -49,6 +62,8 @@ const Orders = ({ url }) => {
             <p>{order.amount}$</p>
             <div className="relative inline-block w-full max-w-xs">
               <select
+                value={order.status}
+                onChange={(event) => statusHandler(event, order._id)}
                 className="block appearance-none w-full dark:bg-neutral-800 border dark:border-neutral-700 dark:text-neutral-200 py-2 px-4 pr-8 rounded leading-tight focus:outline-none hover:cursor-pointer dark:focus:bg-neutral-800 focus:border-orange-500"
               >
                 <option value="Pending">Pending</option>
