@@ -23,7 +23,7 @@ const ExploreMenu = ({category, setCategory}) => {
             key={index}
           >
             <img
-              className={`w-[7.5vw] min-w-20 cursor-pointer rounded-full ${
+              className={`w-[7.5vw] min-w-28 cursor-pointer rounded-full ${
                 category === item.menu_name
                   ? "border-4 border-orange-500"
                   : "border-2 border-transparent"
@@ -33,7 +33,11 @@ const ExploreMenu = ({category, setCategory}) => {
             />
             <h2
               style={{ fontSize: "max(1.4vw, 16px)" }}
-              className="mt-2 mb-4 cursor-pointer dark:text-neutral-200"
+              className={`mt-2 mb-4 cursor-pointer dark:text-neutral-200 ${
+                category === item.menu_name
+                  ? "font-bold"
+                  : "font-normal"
+              }`}
             >
               {item.menu_name}
             </h2>

@@ -21,8 +21,8 @@ const Footer = () => {
         <div className='flex flex-col items-start gap-5'>
           <h2 className='text-xl md:text-2xl font-bold'>GET IN TOUCH</h2>
           <ul>
-            <li className='text-sm md:text-md mb-2 cursor-pointer hover:text-neutral-800 hover:dark:text-neutral-400'>+1-123-456-789</li>
-            <li className='text-sm md:text-md mb-2 cursor-pointer hover:text-neutral-800 hover:dark:text-neutral-400'>contact@spiceroute.com</li>
+            <li className='text-sm md:text-md mb-2'>+1-123-456-789</li>
+            <li className='text-sm md:text-md mb-2'>contact@spiceroute.com</li>
           </ul>
         </div>
       </div>

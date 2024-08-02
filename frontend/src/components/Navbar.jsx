@@ -1,14 +1,16 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { FaMagnifyingGlass, FaCartShopping, FaBagShopping, FaRightFromBracket, FaUser } from 'react-icons/fa6';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { StoreContext } from '../context/StoreContext';
 
 const Navbar = ({ setShowLogin }) => {
-  const { getTotalCartAmount, token, setToken } = useContext(StoreContext);
+  const { getTotalCartAmount, token, setToken, setSearchQuery } = useContext(StoreContext);
   const [menu, setMenu] = useState("home");
   const [dropdownOpen, setDropdownOpen] = useState(false);
-
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState('');
   const navigate = useNavigate();
+  const location = useLocation();
 
   const logout = () => {
     localStorage.removeItem('token');
@@ -25,6 +27,22 @@ const Navbar = ({ setShowLogin }) => {
     setMenu("contact-us");
     navigate("/#footer");
   }
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchQuery(query);
+    setSearchOpen(false);
+    navigate("/#explore-menu");
+  }
+
+  useEffect(() => {
+    if (location.hash === "#explore-menu") {
+      const menuSection = document.getElementById("explore-menu");
+      if (menuSection) {
+        menuSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -47,7 +65,20 @@ const Navbar = ({ setShowLogin }) => {
         <a href='#footer' onClick={handleFooterClick} className={`cursor-pointer dark:text-neutral-200 hover:text-neutral-700 dark:hover:text-neutral-300 hover:border-b-2 hover:border-neutral-700 dark:hover:border-neutral-300 ${menu==="contact-us" ? "pb-1 font-bold border-b-2 border-black dark:border-neutral-200" : "border-neutral-400"} hover:border-neutral-700 dark:hover:border-neutral-300`}>Contact Us</a>
       </ul>
       <div className='flex items-center gap-5 md:gap-8'>
-        <FaMagnifyingGlass className='dark:text-neutral-200 text-lg md:text-2xl dark:hover:text-neutral-300 hover:text-neutral-700 hover:cursor-pointer' />
+        <div className='relative'>
+          <FaMagnifyingGlass onClick={() => setSearchOpen(!searchOpen)} className='dark:text-neutral-200 text-lg hidden md:block md:text-2xl dark:hover:text-neutral-300 hover:text-neutral-700 hover:cursor-pointer' />
+          {searchOpen && (
+            <form onSubmit={handleSearch} className='absolute top-8 right-0 rounded-md'>
+              <input 
+                type='text' 
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                className='p-1 pl-2 border-2 dark:text-neutral-200 border-neutral-100 dark:border-neutral-800 placeholder-neutral-500 dark:bg-neutral-900 rounded-md focus:outline-none dark:focus:border-neutral-700 focus:border-neutral-200'
+                placeholder='Search food...' 
+              />
+            </form>
+          )}
+        </div>
         <div className='relative'>
           <Link to='/cart'><FaCartShopping className='dark:text-neutral-200 text-lg md:text-2xl dark:hover:text-neutral-300 hover:text-neutral-700 hover:cursor-pointer' /></Link>
           {getTotalCartAmount() > 0 && <div className='absolute min-w-4 min-h-4 bg-orange-500 rounded-full -top-2 -right-2 border-2 border-white dark:border-neutral-900'></div>}
