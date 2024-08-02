@@ -4,8 +4,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { StoreContext } from '../context/StoreContext';
 
 const Navbar = ({ setShowLogin }) => {
-  const { getTotalCartAmount, token, setToken, setSearchQuery } = useContext(StoreContext);
-  const [menu, setMenu] = useState("home");
+  const { getTotalCartAmount, token, setToken, setSearchQuery, menu, setMenu } = useContext(StoreContext);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -32,6 +31,7 @@ const Navbar = ({ setShowLogin }) => {
     e.preventDefault();
     setSearchQuery(query);
     setSearchOpen(false);
+    setMenu("menu");
     navigate("/#explore-menu");
   }
 

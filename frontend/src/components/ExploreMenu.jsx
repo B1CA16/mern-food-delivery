@@ -7,10 +7,8 @@ const ExploreMenu = ({category, setCategory}) => {
       <h1 className="text-2xl md:text-3xl font-bold dark:text-neutral-200">
         Explore our menu
       </h1>
-      <p className="max-w-[80%] md:max-w-[60%] text-sm md:text-md dark:text-neutral-200">
-        Choose from a diverse menu featuring a delectable array of dishes. Our
-        mission is to satisfy your cravings and elevate your dining experience,
-        one delicious meal at a time.
+      <p className="max-w-[80%] md:max-w-[70%] text-sm md:text-md dark:text-neutral-200">
+      At SpiceRoute, our menu is a journey through the rich and diverse flavors of global cuisine. From the vibrant spices of Asia to the hearty classics of Europe, each dish is crafted with passion and the finest ingredients. Whether you're craving something familiar or eager to try something new, our menu has something for every palate.
       </p>
       <div className="flex justify-between items-center gap-8 text-center my-4 overflow-x-auto">
         {menu_list.map((item, index) => (

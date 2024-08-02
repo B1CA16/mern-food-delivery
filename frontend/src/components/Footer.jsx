@@ -7,7 +7,7 @@ const Footer = () => {
       <div style={{ gridTemplateColumns: '2fr 1fr 1fr' }} className='w-full flex flex-col md:grid gap-10 md:gap-20'>
         <div className='flex flex-col items-start gap-5'>
           <p className='text-orange-500 font-extrabold text-2xl md:text-3xl'>spiceRoute.</p>
-          <p className='text-sm md:text-md'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti veniam labore neque culpa. Dignissimos, laboriosam? Quod corporis ratione ea soluta accusantium hic perferendis quis, laudantium debitis velit sint quam distinctio excepturi ipsum nihil officia recusandae itaque, labore minus sed corrupti perspiciatis!</p>
+          <p className='text-sm md:text-md'>At SpiceRoute, we are passionate about bringing the flavors of the world to your doorstep. Our dedication to culinary excellence and exceptional service ensures a delightful dining experience, whether you’re dining in with us or enjoying our dishes at home. We pride ourselves on using the freshest ingredients and crafting each dish with care and creativity.</p>
         </div>
         <div className='flex flex-col items-start gap-5'>
           <h2 className='text-xl md:text-2xl font-bold'>COMPANY</h2>
