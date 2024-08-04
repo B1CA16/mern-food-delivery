@@ -86,17 +86,17 @@ const PlaceOrder = () => {
           <div>
             <div className='flex justify-between dark:text-neutral-200'>
               <p>Subtotal</p>
-              <p>{getTotalCartAmount()}$</p>
+              <p>{getTotalCartAmount()}€</p>
             </div>
             <hr className='w-full h-[2px] my-2 bg-neutral-200 dark:bg-neutral-800 border-none' />
             <div className='flex justify-between dark:text-neutral-200'>
               <p>Delivery Fee</p>
-              <p>{getTotalCartAmount() === 0 ? 0 : 2}$</p>
+              <p>{getTotalCartAmount() === 0 ? 0 : 2}€</p>
             </div>
             <hr className='w-full h-[2px] my-2 bg-neutral-200 dark:bg-neutral-800 border-none' />
             <div className='flex justify-between dark:text-neutral-200'>
               <b>Total</b>
-              <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}$</b>
+              <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}€</b>
             </div>
           </div>
           <button type='submit' style={{ width: 'max(15vw, 200px)'}} className='bg-orange-500 text-neutral-200 py-3 rounded-xl transition-colors mt-7 hover:bg-orange-600'>Proceed To Payment</button>

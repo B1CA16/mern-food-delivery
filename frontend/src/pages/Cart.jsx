@@ -26,9 +26,9 @@ const Cart = () => {
                 <div style={{ gridTemplateColumns: '1fr 1.5fr 1fr 1fr 1fr 0.5fr', fontSize: 'max(1.3vw,14px)'}} className='grid items-center dark:text-neutral-200 my-2'>
                   <img className='w-12' src={url + "/images/" +item.image} alt={item.name} />
                   <p>{item.name}</p>
-                  <p>{item.price}$</p>
+                  <p>{item.price}€</p>
                   <p>{cartItems[item._id]}</p>
-                  <p>{item.price * cartItems[item._id]}$</p>
+                  <p>{item.price * cartItems[item._id]}€</p>
                   <p onClick={() => removeFromCart(item._id)} className='cursor-pointer hover:text-neutral-800 dark:hover:text-neutral-200 font-bold text-lg'>x</p>
                 </div>
                 <hr className='w-full h-[2px] bg-neutral-200 dark:bg-neutral-800 border-none' />
@@ -43,17 +43,17 @@ const Cart = () => {
           <div>
             <div className='flex justify-between dark:text-neutral-200'>
               <p>Subtotal</p>
-              <p>{getTotalCartAmount()}$</p>
+              <p>{getTotalCartAmount()}€</p>
             </div>
             <hr className='w-full h-[2px] my-2 bg-neutral-200 dark:bg-neutral-800 border-none' />
             <div className='flex justify-between dark:text-neutral-200'>
               <p>Delivery Fee</p>
-              <p>{getTotalCartAmount() === 0 ? 0 : 2}$</p>
+              <p>{getTotalCartAmount() === 0 ? 0 : 2}€</p>
             </div>
             <hr className='w-full h-[2px] my-2 bg-neutral-200 dark:bg-neutral-800 border-none' />
             <div className='flex justify-between dark:text-neutral-200'>
               <b>Total</b>
-              <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}$</b>
+              <b>{getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}€</b>
             </div>
           </div>
           <button onClick={() => navigate('/order')} style={{ width: 'max(15vw, 200px)'}} className='bg-orange-500 text-neutral-200 py-3 rounded-xl transition-colors hover:bg-orange-600'>Proceed To Checkout</button>
