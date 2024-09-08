@@ -12,10 +12,10 @@ const Footer = () => {
         <div className='flex flex-col items-start gap-5'>
           <h2 className='text-xl md:text-2xl xl:text-3xl font-bold'>COMPANY</h2>
           <ul>
-            <li className='text-sm md:text-md xl:text-lg mb-2 cursor-pointer hover:text-neutral-800 hover:dark:text-neutral-400'>Home</li>
-            <li className='text-sm md:text-md xl:text-lg mb-2 cursor-pointer hover:text-neutral-800 hover:dark:text-neutral-400'>About Us</li>
-            <li className='text-sm md:text-md xl:text-lg mb-2 cursor-pointer hover:text-neutral-800 hover:dark:text-neutral-400'>Delivery</li>
-            <li className='text-sm md:text-md xl:text-lg mb-2 cursor-pointer hover:text-neutral-800 hover:dark:text-neutral-400'>Privacy Policy</li>
+            <li className='text-sm md:text-md xl:text-lg mb-2 cursor-pointer hover:text-orange-500'>Home</li>
+            <li className='text-sm md:text-md xl:text-lg mb-2 cursor-pointer hover:text-orange-500'>About Us</li>
+            <li className='text-sm md:text-md xl:text-lg mb-2 cursor-pointer hover:text-orange-500'>Delivery</li>
+            <li className='text-sm md:text-md xl:text-lg mb-2 cursor-pointer hover:text-orange-500'>Privacy Policy</li>
           </ul>
         </div>
         <div className='flex flex-col items-start gap-5'>

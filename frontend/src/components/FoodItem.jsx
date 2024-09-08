@@ -20,7 +20,7 @@ const FoodItem = ({id, name, description, price, image}) => {
       </div>
       <div className='p-5'>
         <div className='flex justify-between items-center mb-2'>
-          <p className='text-xl font-semibold dark:text-neutral-200'>{name}</p>
+          <p className='text-xl font-semibold truncate dark:text-neutral-200' title={name}>{name}</p>
           <img className='w-18' src={assets.rating_stars} alt="star" />
         </div>
         <p className='dark:text-neutral-200'>{description}</p>

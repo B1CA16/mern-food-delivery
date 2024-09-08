@@ -68,7 +68,7 @@ const Navbar = ({ setShowLogin }) => {
         <div className='relative'>
           <FaMagnifyingGlass onClick={() => setSearchOpen(!searchOpen)} className='dark:text-neutral-200 text-lg xl:text-3xl hidden md:block md:text-2xl dark:hover:text-neutral-300 hover:text-neutral-700 hover:cursor-pointer' />
           {searchOpen && (
-            <form onSubmit={handleSearch} className='absolute top-8 right-0 rounded-md'>
+            <form onSubmit={handleSearch} className='absolute top-9 right-0 rounded-md'>
               <input 
                 type='text' 
                 value={query}
