@@ -4,7 +4,7 @@ A demo food delivery application built with the MERN stack (MongoDB, Express, Re
 
 ## About the Project
 
-This project consists of three main components:
+This project consists of four main components:
 - **Frontend**: React
 - **Backend**: Node.js with Express
 - **Admin Panel**: React
