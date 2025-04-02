@@ -38,8 +38,8 @@ Sometimes, if the backend has been inactive for a certain period, it may take a 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/B1CA16/react-tailwind-mern-food-delivery.git
-cd react-tailwind-mern-food-delivery
+git clone https://github.com/B1CA16/mern-food-delivery.git
+cd mern-food-delivery
 ```
 
 2. Install backend dependencies:
